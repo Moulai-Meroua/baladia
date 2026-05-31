@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إيصال رقمي — Baladiya+ DZ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/storage.js" defer></script>
+  <style>
+    @media print {
+      .gov-header, .no-print { display: none !important; }
+      body { background: white !important; }
+      .receipt-card { box-shadow: none !important; border: 2px solid #000 !important; }
+    }
+    .receipt-card {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      border-top: 6px solid var(--green);
+    }
+    .receipt-header { text-align: center; padding-bottom: 24px; border-bottom: 2px dashed var(--gray-200); }
+    .receipt-header h2 { font-size: 1.3rem; font-weight: 900; color: var(--green-dark); }
+    .receipt-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gray-100); font-size: 0.95rem; }
+    .receipt-row:last-child { border-bottom: none; }
+    .receipt-row .label { color: var(--text-muted); font-weight: 600; }
+    .receipt-row .value { font-weight: 700; color: var(--text); }
+    .qr-block {
+      width: 100px; height: 100px;
+      background: repeating-linear-gradient(45deg, #000, #000 8px, #fff 8px, #fff 16px);
+      border-radius: 8px;
+      margin: 20px auto 0;
+    }
+    .print-btn {
+      display: block;
+      margin: 20px auto;
+      background: var(--green-dark);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .print-btn:hover { background: var(--red); }
+  </style>
+</head>
+<body>
+
+  <header class="gov-header">
+    <div class="logo">
+      <img src="images/flag.png" alt="علم الجزائر">
+      <img src="images/emblem.png" alt="شعار">
+    </div>
+    <div class="titles">
+      <h1>الجمهورية الجزائرية الديمقراطية الشعبية</h1>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <a href="index.html" class="btn-back no-print">← العودة للرئيسية</a>
+
+    <div class="receipt-card" id="receiptCard">
+      <div class="receipt-header">
+        <h2>🧾 إيصال رقمي</h2>
+        <p style="color:var(--text-muted);font-size:0.88rem;margin-top:6px">الجمهورية الجزائرية الديمقراطية الشعبية — وزارة الداخلية</p>
+      </div>
+      <div id="receiptDetails" style="margin-top:20px">
+        <p style="text-align:center;color:var(--text-muted)">جاري تحميل تفاصيل الطلب...</p>
+      </div>
+      <div class="qr-block" title="رمز QR للتحقق"></div>
+      <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:8px">رمز التحقق الرقمي</p>
+    </div>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ طباعة الإيصال</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const detailsDiv = document.getElementById('receiptDetails');
+
+      if (id) {
+        const req = getRequestById(id);
+        if (req) {
+          const docTypes = { birth: 'شهادة ميلاد', residence: 'شهادة إقامة', university: 'شهادة جامعية', civil: 'الحالة المدنية' };
+          const statusInfo = getStatusLabel(req.status);
+          detailsDiv.innerHTML = `
+            <div class="receipt-row"><span class="label">رقم الطلب</span><span class="value" style="font-family:monospace">${req.id}</span></div>
+            <div class="receipt-row"><span class="label">الاسم الكامل</span><span class="value">${req.fullname}</span></div>
+            <div class="receipt-row"><span class="label">نوع الوثيقة</span><span class="value">${docTypes[req.docType] || req.docType}</span></div>
+            <div class="receipt-row"><span class="label">الولاية</span><span class="value">${req.wilaya}</span></div>
+            <div class="receipt-row"><span class="label">تاريخ الطلب</span><span class="value">${req.date || '—'}</span></div>
+            <div class="receipt-row"><span class="label">الحالة</span><span class="value"><span class="status-badge ${statusInfo.class}">${statusInfo.ar}</span></span></div>
+          `;
+          return;
+        }
+      }
+      detailsDiv.innerHTML = '<p style="color:var(--red);text-align:center">لم يتم العثور على الطلب. تأكد من الرابط.</p>';
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>طلب الوثائق — Baladiya+ DZ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body class="page-inner">
+
+  <header class="gov-header">
+    <div class="logo">
+      <img src="images/flag.png" alt="علم الجزائر">
+      <img src="images/emblem.png" alt="شعار">
+    </div>
+    <div class="titles">
+      <h1>الجمهورية الجزائرية الديمقراطية الشعبية</h1>
+      <h2>منصة البلدية الرقمية</h2>
+    </div>
+    <div class="header-controls">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ar" onclick="setLanguage('ar')">AR</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">FR</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+      </div>
+      <button class="mode-btn" id="darkModeToggle">🌙</button>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <a href="index.html" class="btn-back">← العودة للرئيسية</a>
+
+    <div class="page-header">
+      <h1>📄 طلب وثائق رسمية</h1>
+      <p>يرجى تعبئة جميع الحقول المطلوبة بدقة لمعالجة طلبكم.</p>
+    </div>
+
+    <form id="requestForm" class="gov-form">
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label>الاسم الكامل *</label>
+          <input type="text" id="fullname" placeholder="أدخل اسمك الكامل" required>
+        </div>
+        <div class="form-row">
+          <label>الرقم الوطني (18 رقم) *</label>
+          <input type="text" id="nid" maxlength="18" placeholder="XXXXXXXXXXXXXXXXXX" required>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label>رقم الهاتف *</label>
+          <input type="tel" id="phone" placeholder="0XXX XXX XXX" required>
+        </div>
+        <div class="form-row">
+          <label>نوع الوثيقة *</label>
+          <select id="docType" required>
+            <option value="">-- اختر نوع الوثيقة --</option>
+            <option value="birth">شهادة ميلاد</option>
+            <option value="residence">شهادة إقامة</option>
+            <option value="university">شهادة جامعية</option>
+            <option value="civil">الحالة المدنية</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label>الولاية *</label>
+          <select id="wilaya" required>
+            <option value="">-- اختر الولاية --</option>
+            <option value="Adrar">أدرار</option><option value="Chlef">الشلف</option>
+            <option value="Laghouat">الأغواط</option><option value="Oum El Bouaghi">أم البواقي</option>
+            <option value="Batna">باتنة</option><option value="Béjaïa">بجاية</option>
+            <option value="Biskra">بسكرة</option><option value="Béchar">بشار</option>
+            <option value="Blida">البليدة</option><option value="Bouira">البويرة</option>
+            <option value="Tamanrasset">تمنراست</option><option value="Tébessa">تبسة</option>
+            <option value="Tlemcen">تلمسان</option><option value="Tiaret">تيارت</option>
+            <option value="Tizi Ouzou">تيزي وزو</option><option value="Alger">الجزائر</option>
+            <option value="Djelfa">الجلفة</option><option value="Jijel">جيجل</option>
+            <option value="Sétif">سطيف</option><option value="Saïda">سعيدة</option>
+            <option value="Skikda">سكيكدة</option><option value="Sidi Bel Abbès">سيدي بلعباس</option>
+            <option value="Annaba">عنابة</option><option value="Guelma">قالمة</option>
+            <option value="Constantine">قسنطينة</option><option value="Médéa">المدية</option>
+            <option value="Mostaganem">مستغانم</option><option value="M'Sila">المسيلة</option>
+            <option value="Mascara">معسكر</option><option value="Ouargla">ورقلة</option>
+            <option value="Oran">وهران</option><option value="El Bayadh">البيض</option>
+            <option value="Illizi">إليزي</option><option value="Bordj Bou Arréridj">برج بوعريريج</option>
+            <option value="Boumerdès">بومرداس</option><option value="El Tarf">الطارف</option>
+            <option value="Tindouf">تندوف</option><option value="Tissemsilt">تيسمسيلت</option>
+            <option value="El Oued">الوادي</option><option value="Khenchela">خنشلة</option>
+            <option value="Souk Ahras">سوق أهراس</option><option value="Tipaza">تيبازة</option>
+            <option value="Mila">ميلة</option><option value="Aïn Defla">عين الدفلى</option>
+            <option value="Naâma">النعامة</option><option value="Aïn Témouchent">عين تموشنت</option>
+            <option value="Ghardaïa">غرداية</option><option value="Relizane">غليزان</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>البلدية *</label>
+          <select id="municipality" required>
+            <option value="">-- اختر الولاية أولاً --</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>تحميل مستند (اختياري)</label>
+        <div class="file-upload-wrapper">
+          <div class="upload-icon">📎</div>
+          <p>اسحب الملف هنا أو اضغط للاختيار</p>
+          <small style="color:var(--text-muted)">PDF, JPG, PNG — حجم أقصى 5MB</small>
+          <input type="file" id="fileUpload" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>ملاحظات إضافية</label>
+        <textarea id="notes" placeholder="أي معلومات إضافية تودّ إضافتها..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">📨 إرسال الطلب</button>
+    </form>
+
+    <div id="requestResult"></div>
+  </div>
+
+  <footer class="gov-footer">
+    <p>© 2026 الجمهورية الجزائرية الديمقراطية الشعبية — وزارة الداخلية</p>
+  </footer>
+
+</body>
+</html>

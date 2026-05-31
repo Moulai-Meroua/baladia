@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول — Baladiya+ DZ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, var(--green-dark) 0%, #002e16 50%, #1a0010 100%);
+    }
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .login-box {
+      background: rgba(255,255,255,0.97);
+      border-radius: 20px;
+      padding: 48px 44px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      animation: fadeUp 0.5s ease;
+    }
+    .login-logo {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .login-logo .brand {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--green-dark);
+    }
+    .login-logo .brand span { color: var(--red); }
+    .login-logo p { color: var(--text-muted); font-size: 0.9rem; margin-top: 6px; }
+    .login-box label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid var(--gray-200);
+      border-radius: 10px;
+      background: var(--gray-100);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      transition: var(--transition);
+      outline: none;
+      direction: rtl;
+      margin-bottom: 20px;
+    }
+    .login-box input:focus {
+      border-color: var(--green);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0,102,51,0.1);
+    }
+    .login-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      font-family: 'Tajawal', sans-serif;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .login-btn:hover {
+      background: linear-gradient(135deg, var(--red), #8B0000);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(210,16,52,0.4);
+    }
+    .login-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+    .back-link {
+      display: block; text-align: center; margin-top: 20px;
+      color: var(--green); font-size: 0.88rem; text-decoration: none; font-weight: 700;
+    }
+    .back-link:hover { color: var(--red); }
+    .demo-hint {
+      background: rgba(0,102,51,0.08);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+      text-align: center;
+    }
+    .demo-hint strong { color: var(--green-dark); }
+  </style>
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <div class="login-box">
+      <div class="login-logo">
+        <div class="brand">Baladi<span>ya+</span></div>
+        <p>🔐 لوحة الإدارة — الدخول المخصص للموظفين</p>
+      </div>
+
+      <form id="loginForm">
+        <label>اسم المستخدم</label>
+        <input type="text" id="username" placeholder="أدخل اسم المستخدم" required autocomplete="username">
+
+        <label>كلمة المرور</label>
+        <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+
+        <button type="submit" class="login-btn">تسجيل الدخول</button>
+      </form>
+
+      <div id="loginMessage"></div>
+
+      <div class="demo-hint">
+        <strong>بيانات تجريبية:</strong> المستخدم: <code>admin</code> — كلمة المرور: <code>admin123</code>
+      </div>
+
+      <a href="index.html" class="back-link">← العودة للصفحة الرئيسية</a>
+    </div>
+  </div>
+
+</body>
+</html>

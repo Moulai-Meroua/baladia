@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة — Baladiya+ DZ</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="js/storage.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+
+<div class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">🏛</div>
+      <div>
+        <h2>Baladiya+</h2>
+        <p>لوحة الإدارة</p>
+      </div>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="#stats" class="active"><span class="nav-icon">📊</span> الإحصائيات</a></li>
+      <li><a href="#requests"><span class="nav-icon">📄</span> الطلبات <span class="nav-badge" id="pendingBadge">—</span></a></li>
+      <li><a href="#appointments"><span class="nav-icon">📅</span> المواعيد</a></li>
+      <li><a href="index.html"><span class="nav-icon">🏠</span> الصفحة الرئيسية</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button id="logoutBtn" style="background:rgba(210,16,52,0.2);border:none;color:rgba(255,255,255,0.7);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:0.85rem;width:100%;transition:all 0.3s">
+        🚪 تسجيل الخروج
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="dash-main">
+    <div class="dash-topbar">
+      <h1>📊 لوحة الإدارة</h1>
+      <div class="admin-tag">
+        <span>👤</span>
+        <span>المشرف</span>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <section id="stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon green">📄</div>
+          <div class="stat-info">
+            <h3 id="statRequests">0</h3>
+            <p>إجمالي الطلبات</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">⏳</div>
+          <div class="stat-info">
+            <h3 id="statPending">0</h3>
+            <p>قيد المعالجة</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">✅</div>
+          <div class="stat-info">
+            <h3 id="statApproved">0</h3>
+            <p>طلبات مقبولة</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">📅</div>
+          <div class="stat-info">
+            <h3 id="statAppointments">0</h3>
+            <p>المواعيد</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requests -->
+    <section id="requests">
+      <div class="dash-section">
+        <div class="dash-section-header">
+          <h2>📄 إدارة الطلبات</h2>
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="بحث بالاسم أو الرقم...">
+          </div>
+        </div>
+        <div class="dash-table-wrapper">
+          <table id="requestsTable">
+            <thead>
+              <tr>
+                <th>رقم الطلب</th>
+                <th>الاسم</th>
+                <th>الوثيقة</th>
+                <th>الولاية</th>
+                <th>الحالة</th>
+                <th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="6">
+                  <div class="empty-state">
+                    <div class="empty-icon">📭</div>
+                    <p>لا توجد طلبات بعد</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appointments -->
+    <section id="appointments">
+      <div class="dash-section">
+        <div class="dash-section-header">
+          <h2>📅 إدارة المواعيد</h2>
+        </div>
+        <div class="dash-table-wrapper">
+          <table id="appointmentsTable">
+            <thead>
+              <tr>
+                <th>رقم الموعد</th>
+                <th>البلدية</th>
+                <th>التاريخ</th>
+                <th>الوقت</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4">
+                  <div class="empty-state">
+                    <div class="empty-icon">📅</div>
+                    <p>لا توجد مواعيد بعد</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

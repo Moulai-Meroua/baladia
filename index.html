@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baladiya+ DZ — المنصة الرقمية للبلدية الجزائرية</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">Baladi<span>ya+</span></div>
+    <div class="loader"></div>
+    <p>جاري التحميل...</p>
+  </div>
+
+  <!-- Header -->
+  <header class="gov-header">
+    <div class="logo">
+      <img src="images/flag.png" alt="علم الجزائر">
+      <img src="images/emblem.png" alt="شعار الجمهورية">
+    </div>
+    <div class="titles">
+      <h1 data-i18n="gov_title">الجمهورية الجزائرية الديمقراطية الشعبية</h1>
+      <h2 data-i18n="platform_subtitle">منصة البلدية الرقمية</h2>
+      <h3 data-i18n="platform_subtitle_fr">Plateforme numérique de la commune</h3>
+    </div>
+    <div class="header-controls">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ar" onclick="setLanguage('ar')">AR</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">FR</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+      </div>
+      <button class="mode-btn" id="darkModeToggle" title="تبديل الوضع المظلم">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge" data-i18n="hero_badge">🇩🇿 خدمات رقمية موثوقة</div>
+      <h1 data-i18n="hero_title">مرحبا بكم في المنصة الرقمية للبلدية</h1>
+      <p data-i18n="hero_subtitle">خدمات رقمية لتسهيل حياتكم اليومية</p>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+      <h2 class="section-title" data-i18n="services_title">الخدمات المتاحة</h2>
+      <div class="cards">
+        <a href="request.html" class="card">
+          <div class="card-icon">📄</div>
+          <span data-i18n="service_request">طلب الوثائق</span>
+          <small style="color:var(--text-muted);font-size:0.82rem">شهادات ووثائق رسمية</small>
+        </a>
+        <a href="tracking.html" class="card">
+          <div class="card-icon">🔍</div>
+          <span data-i18n="service_tracking">تتبع الطلبات</span>
+          <small style="color:var(--text-muted);font-size:0.82rem">تحقق من حالة طلبك</small>
+        </a>
+        <a href="appointments.html" class="card">
+          <div class="card-icon">📅</div>
+          <span data-i18n="service_appointments">حجز المواعيد</span>
+          <small style="color:var(--text-muted);font-size:0.82rem">احجز موعداً في بلديتك</small>
+        </a>
+        <a href="admin.html" class="card">
+          <div class="card-icon">🔐</div>
+          <span data-i18n="service_admin">لوحة الإدارة</span>
+          <small style="color:var(--text-muted);font-size:0.82rem">للموظفين المخوّلين</small>
+        </a>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <h2 class="section-title" data-i18n="stats_title">إحصائيات المنصة</h2>
+      <div class="stat-counters">
+        <div class="stat-item">
+          <span class="counter" data-target="1200">0</span>
+          <p data-i18n="stats_requests">طلبات معالجة</p>
+        </div>
+        <div class="stat-item">
+          <span class="counter" data-target="350">0</span>
+          <p data-i18n="stats_appointments">مواعيد محجوزة</p>
+        </div>
+        <div class="stat-item">
+          <span class="counter" data-target="4800">0</span>
+          <p data-i18n="stats_users">مواطن مسجل</p>
+        </div>
+        <div class="stat-item">
+          <span class="counter" data-target="58">0</span>
+          <p data-i18n="stats_municipalities">بلدية مشاركة</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <h2 class="section-title" data-i18n="faq_title">الأسئلة الشائعة</h2>
+      <div style="margin-top:24px">
+        <div class="faq-item">
+          <div class="faq-question" data-i18n="faq_q1">كيف أطلب شهادة الميلاد؟</div>
+          <div class="faq-answer" data-i18n="faq_a1">يمكنك تقديم طلب عبر قسم "طلب الوثائق" في الصفحة الرئيسية، ثم اختيار نوع الوثيقة وتعبئة البيانات المطلوبة.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" data-i18n="faq_q2">كيف أتتبع طلبي؟</div>
+          <div class="faq-answer" data-i18n="faq_a2">استخدم رقم الطلب الذي وصلك بعد التسجيل في قسم "تتبع الطلبات" للاطلاع على الحالة الراهنة.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" data-i18n="faq_q3">هل يمكنني حجز موعد عبر الإنترنت؟</div>
+          <div class="faq-answer" data-i18n="faq_a3">نعم، يمكنك حجز موعد في أي بلدية عبر قسم "حجز المواعيد" واختيار التاريخ والوقت المناسبين.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="gov-footer">
+    <p data-i18n="footer_text">© 2026 الجمهورية الجزائرية الديمقراطية الشعبية — وزارة الداخلية</p>
+  </footer>
+
+</body>
+</html>
